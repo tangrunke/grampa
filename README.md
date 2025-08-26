@@ -36,9 +36,11 @@ Pull requests are welcome for users that want to add features!
 
 GRAMPA uses a set of developer tools that can be installed with
 
-`git clone git@github.com:ErikOsinga/grampa.git`
-`cd grampa`
-`pip install '.[dev]'`
+```
+git clone git@github.com:ErikOsinga/grampa.git
+cd grampa
+pip install '.[dev]'
+```
 
 These tools can run upon git commit by using
 
