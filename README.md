@@ -7,6 +7,11 @@
 GRAMPA is a Python-based tool for modeling magnetic fields as Gaussian random fields following a specified power spectrum and electron density profile, as described in Murgia et al. (2004) and originally proposed by Tribble (1991). This framework is designed primarily for analyzing Faraday rotation experiments in galaxy clusters but can be applied more generally to other magnetized plasmas, depending on the chosen parameters.
 
 ## Getting Started
+Install GRAMPA from PyPI with 
+```
+pip install grampa
+```
+
 To begin using GRAMPA, refer to the Jupyter notebook `examples/example_cluster_Bfield.ipynb`, which provides an example workflow to help users understand the implementation and features of the code.
 
 ## Citation
