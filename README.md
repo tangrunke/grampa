@@ -20,7 +20,7 @@ If you use this code in your research, please cite the following works:
 - **Osinga et al. 2025**: [A&A, 694, A44](https://ui.adsabs.harvard.edu/abs/2025A%26A...694A..44O/abstract)
 
 If your work involves lognormal density fluctuations, please also cite:
-- **Khadir et al. 2025 (in prep.)**
+- **Khadir et al. 2026**: [ApJ, 997-2, id214, 26 pp](https://ui.adsabs.harvard.edu/abs/2026ApJ...997..214K/abstract)
 - **PyFC**: [PyFC on PiWheels](https://www.piwheels.org/project/pyfc/)
 
 ## License
