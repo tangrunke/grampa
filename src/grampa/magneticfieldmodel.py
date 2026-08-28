@@ -372,7 +372,7 @@ class MagneticFieldModel:
                     self.logger.info("Computing real-space vector potential A via inverse FFT...")
                     # 创建一个逆变换器（参数完全模仿 computeBfromA 中的写法）
                     run_ift_A = pyfftw.builders.irfftn(
-                        field,  # 注意：此时 field 还是傅里叶 A
+                        field.copy(),  # 注意：此时 field 还是傅里叶 A
                         s=(self.N, self.N, self.N),
                         axes=(0, 1, 2),
                         auto_contiguous=False,
