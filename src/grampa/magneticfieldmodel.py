@@ -367,7 +367,30 @@ class MagneticFieldModel:
                 field = mutils.calculate_vectorpotential(
                     self.N, self.xi, self.lambdamax, self.pixsize, self.ftype
                 )
-
+                # 在调用 computeBfromA 之前，保存实空间 A
+                if self.saverawfields:
+                    self.logger.info("Computing real-space vector potential A via inverse FFT...")
+                    # 创建一个逆变换器（参数完全模仿 computeBfromA 中的写法）
+                    run_ift_A = pyfftw.builders.irfftn(
+                        field,  # 注意：此时 field 还是傅里叶 A
+                        s=(self.N, self.N, self.N),
+                        axes=(0, 1, 2),
+                        auto_contiguous=False,
+                        auto_align_input=False,
+                        avoid_copy=True,
+                        threads=self.nthreads_fft,
+                    )
+                    A_real = run_ift_A()  # 得到形状 (N, N, N, 3) 的实数组
+    
+                    # 保存到文件（需定义 A_real_file 路径，参照 Bfield_file 的命名规则）
+                    A_real_file = f"{self.savedir}A_real_N={self.N}_p={self.pixsize}_xi={self.xi:.2f}_Lmax={self.lambdamax}_it{self.iteration}.npy"
+                    np.save(A_real_file, A_real)
+                    self.logger.info(f"Saved real-space A to {A_real_file}")
+    
+                    # 释放 A_real 以节省内存（因为后面还要算 B，内存会很吃紧）
+                    del A_real
+                    if self.garbagecollect:
+                        gc.collect()
                 # compute B from A
                 B_field = self.computeBfromA(None, field)
 
